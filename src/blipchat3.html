@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="\css\styles3.css">
+    <link rel="icon" href="\img\blip.png" type="image/x-icon">
+    <title>Testes BlipChat Widget Personalizado</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1 class="title">Testes BlipChat Widget Personalizado</h1>
+        <p class="subtitle">Blip S.A</p>
+        <a href="/index.html">
+          <button class="button">Voltar</button>
+        </a>
+      </div>
+    </div>
+    
+    <div class="message-bubble">
+      <p>Qual é a sua dúvida?</p>
+      <p>Vamos conversar sobre isso!</p>
+      <span
+        class="close-button"
+        id="bubble-msg"
+        onclick="this.parentElement.style.display='none'"
+      ></span>
+    </div>
+    <script
+      src="https://unpkg.com/blip-chat-widget"
+      type="text/javascript"
+    ></script>
+    <script>
+      (function () {
+        window.onload = function () {
+          var blipClient = new BlipChat()
+            .withAppKey('bGxsbGxsOjY0MDlmZWFiLTE5ZDQtNDdlZC1iMzIzLWM2YjU5YmZjZDAxMQ==')
+            .withButton({
+              color: "#0976bc",
+              icon: "",
+            })
+            .withCustomCommonUrl('https://victor-teste4-ser2p.chat.blip.ai/')
+            .withEventHandler(BlipChat.ENTER_EVENT, function () {
+              console.log("blipchat user enter");
+
+              var dataAtual = new Date().getTime();
+
+              if (localStorage.getItem("ultimaVisita")) {
+                var ultimaVisita = localStorage.getItem("ultimaVisita");
+
+                var diferencaTempo = dataAtual - parseInt(ultimaVisita);
+
+                var diferencaHoras = Math.floor(
+                  diferencaTempo / (1000 * 60 * 60)
+                );
+
+                if (diferencaHoras > 24) {
+                  console.log(
+                    "Mais de 24 horas se passaram desde a última visita."
+                  );
+                  // Faça algo aqui, se necessário.
+                } else {
+                  console.log(
+                    "Menos de 24 horas se passaram desde a última visita."
+                  );
+                  // Faça algo aqui, se necessário.
+                }
+              }
+              localStorage.setItem("ultimaVisita", dataAtual.toString());
+            })
+            .withEventHandler(BlipChat.LEAVE_EVENT, function () {
+              var dateLeave = Date.now();
+              console.log("blipchat user leave");
+            })
+            .withEventHandler(BlipChat.LOAD_EVENT, function () {
+              document.getElementById("bubble-msg").click();
+              console.log("blipchat loaded");
+            })
+            .withEventHandler(BlipChat.CREATE_ACCOUNT_EVENT, function () {
+              console.log("blipchat account created");
+              blipClient.sendMessage({
+                type: "text/plain",
+                content: "Blipchat Iniciado",
+              });
+            });
+          blipClient.build();
+        };
+      })();
+
+      //Miniminizar o BlipChat Caso Necessario
+      const blipChatButton = document.getElementById("blip-chat-open-iframe");
+      blipChatButton.classList.remove("opened");
+
+    </script>
+  </body>
+</html>
+

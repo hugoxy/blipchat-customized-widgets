@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="\css\styles2.css">
+    <title>BlipChat02 Testes</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1 class="title">Testes BlipChat Widget Personalizado</h1>
+        <p class="subtitle">Blip S.A</p>
+        <a href="/index.html">
+          <button class="button">Voltar</button>
+        </a>
+      </div>
+    </div>
+    <script
+      src="https://unpkg.com/blip-chat-widget"
+      type="text/javascript"
+    ></script>
+    <script>
+      (function () {
+        window.onload = function () {
+          var blipClient = new BlipChat()
+            .withAppKey('bGxsbGxsOjY0MDlmZWFiLTE5ZDQtNDdlZC1iMzIzLWM2YjU5YmZjZDAxMQ==')
+            .withButton({
+              color: "#0976bc",
+              icon: "/img/blip.png",
+            })
+            .withCustomCommonUrl('https://victor-teste4-ser2p.chat.blip.ai/')
+            .withEventHandler(BlipChat.CREATE_ACCOUNT_EVENT, function () {
+              blipClient.sendMessage({
+                type: "text/plain",
+                content: "Blipchat Iniciado",
+              });
+            });
+          blipClient.build();
+        };
+      })();
+    </script>
+  </body>
+</html>

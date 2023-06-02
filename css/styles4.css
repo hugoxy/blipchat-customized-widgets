@@ -1,0 +1,136 @@
+.message-bubble {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-flow: row wrap;
+  position: fixed;
+  background-color: #303030;
+  color: #fff;
+  right: calc(100px + 2%);
+  max-width: 240px;
+  bottom: 60px;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  z-index: 980;
+  animation: toggle-bubble 0.5s ease-out;
+  margin-left: 15px;
+  line-height: 1.5em;
+  transform-origin: 100% 100%;
+}
+
+.message-bubble::after {
+  bottom: 0;
+  content: '';
+  position: absolute;
+  left: calc(100% - 10px);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px;
+  border-color: transparent transparent #303030 transparent;
+}
+
+.message-bubble p {
+  margin: 0;
+}
+
+.message-bubble p + p {
+  margin-top: 0.8em;
+}
+
+.message-bubble .close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 14px;
+  height: 14px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.message-bubble .close-button::before,
+.message-bubble .close-button::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  width: 2px;
+  height: 10px;
+  background-color: #fff;
+}
+
+.message-bubble .close-button::before {
+  left: 6px;
+  transform: rotate(45deg);
+}
+
+.message-bubble .close-button::after {
+  right: 6px;
+  transform: rotate(-45deg);
+}
+
+@keyframes toggle-bubble {
+  from {
+    transform: scale(0.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+
+
+body {
+  background-color: #f5f5f5;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  padding: 2em;
+  width: 400px;
+}
+
+.title {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 1em;
+}
+
+.subtitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 1em;
+}
+
+.button {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #0976bc;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0976bc;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
+}

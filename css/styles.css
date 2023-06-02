@@ -1,0 +1,206 @@
+.message-bubble {
+  font-family: Nunito Sans, sans-serif;
+  display: flex;
+  flex-flow: row wrap;
+  position: fixed;
+  background: #fff;
+  color: #909ba9;
+  right: calc(100px + 2%);
+  max-width: 240px;
+  bottom: 60px;
+  padding: 1em;
+  border-radius: 13px;
+  box-shadow: 1px -1px 9px rgba(0, 0, 0, 0.75);
+  z-index: 980;
+  animation: toggle-bubble 0.5s ease-out;
+  margin-left: 15px;
+  line-height: 1.5em;
+  transform-origin: 100% 100%;
+}
+
+.message-bubble::after {
+  bottom: 0;
+  content: "";
+  position: absolute;
+  left: calc(100% - 15px);
+  width: 0;
+  border: 14px solid transparent;
+  border-bottom-color: #fff;
+  border-radius: 4.5px;
+}
+
+.message-bubble::before {
+  bottom: 0;
+  content: "";
+  position: absolute;
+  left: calc(100% - 12px);
+  width: 0;
+  border: 15px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.25);
+  filter: blur(2px);
+  border-radius: 4.5px;
+}
+
+.message-bubble p {
+  margin: 0;
+}
+
+.message-bubble p + p {
+  margin-block: 0.4em 0;
+}
+
+.message-bubble .close-button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 0.7em;
+  height: 0.7em;
+  opacity: 0.3;
+}
+
+.message-bubble .close-button:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.message-bubble .close-button:before,
+.message-bubble .close-button:after {
+  position: absolute;
+  content: " ";
+  height: 0.8em;
+  width: 2px;
+  background-color: #333;
+}
+
+.message-bubble .close-button:before {
+  transform: rotate(45deg);
+}
+
+.message-bubble .close-button:after {
+  transform: rotate(-45deg);
+}
+
+@keyframes toggle-bubble {
+  from {
+    transform: scale(0.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Ignorar só pra customizar o fundo */
+
+body {
+  background-color: #f5f5f5;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  padding: 2em;
+  width: 400px;
+}
+
+.title {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 1em;
+}
+
+.subtitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 1em;
+}
+
+.button {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #0976bc;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0976bc;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
+}
+
+/* Ignorar só pra customizar o fundo */
+
+body {
+  background-color: #f5f5f5;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  padding: 2em;
+  width: 400px;
+}
+
+.title {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 1em;
+}
+
+.subtitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 1em;
+}
+
+.button {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #0976bc;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0976bc;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
+}
